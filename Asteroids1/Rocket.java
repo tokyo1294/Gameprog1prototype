@@ -15,7 +15,7 @@ public class Rocket extends Mover
     private int reloadDelayCount;           // How long ago we fired the gun the last time.
     private Vector acceleration;            // A vector used to accelerate when using booster.
     private int shotsFired;                 // Number of shots fired.
-    
+    public static int spaceshipLevel = 1;
     private GreenfootImage rocket = new GreenfootImage("rocket.png");
     private GreenfootImage rocketWithThrust = new GreenfootImage("rocketWithThrust.png");
 
@@ -41,6 +41,20 @@ public class Rocket extends Mover
         checkKeys();
         checkCollision();
         reloadDelayCount++;
+        if (spaceshipLevel == 1 )
+        {
+            rocket = new GreenfootImage("spaceShip1_notrust.png");
+            rocket.scale(100,100);
+            rocketWithThrust = new GreenfootImage("spaceShip1.png");
+            rocketWithThrust.scale(100,100);
+        }
+         if (spaceshipLevel == 2 )
+        {
+            rocket = new GreenfootImage("spaceShip2.png");
+            rocket.scale(100,100);
+            rocketWithThrust = new GreenfootImage("spaceShip2_withTrust.png");
+            rocketWithThrust.scale(100,100);
+        }
     }
     
     /**
