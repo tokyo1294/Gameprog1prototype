@@ -15,12 +15,11 @@ public class Portal extends Actor
     public void act()
     {
 
-
-        Rocket a = (Rocket) getOneIntersectingObject(Rocket.class);
-        if (a != null) {
-            //Rocket.spaceshipLevel++;
+        Rocket rocket = (Rocket) getOneIntersectingObject(Rocket.class);
+        if (rocket != null) {
+            Rocket.spaceshipLevel++;
             Greenfoot.setWorld(new Level2());
         }
-    // Add your action code here.
+        // Add your action code here.
     }
 }

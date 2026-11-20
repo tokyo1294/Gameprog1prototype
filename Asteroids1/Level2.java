@@ -8,7 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Level2 extends World
 {
-
+    private boolean portalSpawned = false;
     /**
      * Constructor for objects of class Level2.
      * 
@@ -16,9 +16,24 @@ public class Level2 extends World
     public Level2()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
-        super(600, 400, 1); 
+        super(800, 600, 1); 
         prepare();
+
+        // Example Asteroids
+        addObject(new Asteroid(), 300, 100);
+        addObject(new Asteroid(), 450, 200);
+        addObject(new Asteroid(), 250, 300);
     }
+
+    public void act()
+    {
+        if(!portalSpawned && getObjects(Asteroid.class).isEmpty()){
+            Portal portal = new Portal();
+            addObject(portal, getWidth()/2,getHeight()/2);
+            portalSpawned = true;
+        }
+    }
+
     /**
      * Prepare the world for the start of the program.
      * That is: create the initial objects and add them to the world.

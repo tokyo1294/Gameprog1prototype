@@ -91,12 +91,12 @@ public class Rocket extends Mover
      */
     private void checkKeys() 
     {
-        ignite(Greenfoot.isKeyDown("up"));
+        ignite(Greenfoot.isKeyDown("w"));
         
-        if(Greenfoot.isKeyDown("left")) {
+        if(Greenfoot.isKeyDown("a")) {
             turn(-5);
         }        
-        if(Greenfoot.isKeyDown("right")) {
+        if(Greenfoot.isKeyDown("d")) {
             turn(5);
         }
         if(Greenfoot.isKeyDown("space")) {
