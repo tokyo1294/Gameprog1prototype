@@ -16,6 +16,8 @@ public class Rocket extends Mover
     private Vector acceleration;            // A vector used to accelerate when using booster.
     private int shotsFired;                 // Number of shots fired.
     public static int spaceshipLevel = 1;
+    public static int itemsCollected = 0;          // Items picked up (kept when changing level).
+    private static final int ITEMS_FOR_UPGRADE = 5; // Items needed to upgrade the ship to level 2.
     private GreenfootImage rocket = new GreenfootImage("rocket.png");
     private GreenfootImage rocketWithThrust = new GreenfootImage("rocketWithThrust.png");
 
@@ -57,6 +59,40 @@ public class Rocket extends Mover
         }
     }
     
+    /**
+     * Called by Greenfoot when the rocket is added to a world: show the item counter.
+     */
+    protected void addedToWorld(World world)
+    {
+        updateItemDisplay();
+    }
+
+    /**
+     * Collect one item. When enough items are collected, upgrade the ship to level 2.
+     */
+    public void collectItem()
+    {
+        itemsCollected++;
+        if (spaceshipLevel < 2 && itemsCollected >= ITEMS_FOR_UPGRADE) {
+            spaceshipLevel = 2;
+            Greenfoot.playSound("hooray.wav");
+        }
+        updateItemDisplay();
+    }
+
+    /**
+     * Show the number of collected items (or the ship level) at the top of the screen.
+     */
+    private void updateItemDisplay()
+    {
+        if (spaceshipLevel >= 2) {
+            getWorld().showText("Ship level 2!", 100, 20);
+        }
+        else {
+            getWorld().showText("Items: " + itemsCollected + " / " + ITEMS_FOR_UPGRADE, 100, 20);
+        }
+    }
+
     /**
      * Return the number of shots fired from this rocket.
      */
