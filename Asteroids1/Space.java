@@ -15,6 +15,8 @@ public class Space extends World
     public Space() 
     {
         super(800, 600, 1);
+        Rocket.spaceshipLevel = 1;   // new game: the ship starts at level 1
+        Rocket.itemsCollected = 0;   // new game: no items collected yet
         GreenfootImage background = getBackground();
         background.setColor(Color.BLACK);
         background.fill();

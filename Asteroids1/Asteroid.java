@@ -16,6 +16,9 @@ public class Asteroid extends Mover
     /** When the stability reaches 0 the asteroid will break up */
     private int stability;
 
+    /** Chance (in percent) that an item appears when an asteroid is destroyed */
+    private static final int ITEM_DROP_CHANCE = 35;
+
     /**
      * Create an asteroid with default size and speed.
      */
@@ -89,6 +92,7 @@ public class Asteroid extends Mover
     private void breakUp() 
     {
         Greenfoot.playSound("Explosion.wav");
+        dropItem();
         
         if (size <= 16) {
             // if we are already very small, just disappear
@@ -109,6 +113,16 @@ public class Asteroid extends Mover
             a2.move();
         
             getWorld().removeObject(this);
+        }
+    }
+
+    /**
+     * Sometimes (randomly) leave an item where this asteroid was destroyed.
+     */
+    private void dropItem()
+    {
+        if (Greenfoot.getRandomNumber(100) < ITEM_DROP_CHANCE) {
+            getWorld().addObject(new Item(), getX(), getY());
         }
     }
 }
