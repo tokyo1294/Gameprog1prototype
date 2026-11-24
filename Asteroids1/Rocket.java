@@ -46,9 +46,9 @@ public class Rocket extends Mover
         if (spaceshipLevel == 1 )
         {
             rocket = new GreenfootImage("spaceShip1_notrust.png");
-            rocket.scale(100,100);
+            rocket.scale(50,50);
             rocketWithThrust = new GreenfootImage("spaceShip1.png");
-            rocketWithThrust.scale(100,100);
+            rocketWithThrust.scale(50,50);
         }
          if (spaceshipLevel == 2 )
         {
@@ -137,7 +137,12 @@ public class Rocket extends Mover
         }
         if(Greenfoot.isKeyDown("space")) {
             fire();
-        }        
+        }
+        if(Greenfoot.isKeyDown("s")){
+            
+        
+        
+        }
     }
     
     /**
